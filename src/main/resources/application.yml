@@ -7,3 +7,16 @@ spring:
       host: localhost
       port: 27017
       database: test
+
+  rabbitmq:
+    host: sheep-01.rmq.cloudamqp.com
+    virtual-host: blhasfjj
+    #    port: 5672
+    username: blhasfjj
+    password: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+
+rocket:
+  rabbitmq:
+    queue: rocket.queue
+    exchange: rocket.exchange
+    routingkey: rocket.routingkey

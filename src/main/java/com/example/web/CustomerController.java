@@ -2,6 +2,7 @@ package com.example.web;
 
 import com.example.dao.CustomerRepository;
 import com.example.domain.Customer;
+import com.example.publisher.RabbitPublisher;
 import com.example.web.dto.CustomerDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,12 @@ import java.util.List;
 public class CustomerController {
 
 	private final CustomerRepository repository;
+	private final RabbitPublisher publisher;
 
 	@Autowired
-	public CustomerController(CustomerRepository repository) {
+	public CustomerController(CustomerRepository repository, RabbitPublisher publisher) {
 		this.repository = repository;
+		this.publisher = publisher;
 	}
 
 	@GetMapping("customer")
@@ -40,6 +43,9 @@ public class CustomerController {
 		ModelMapper modelMapper = new ModelMapper();
 		Customer customer = modelMapper.map(customerDto, Customer.class);
 		repository.save(customer);
+
+		publisher.produceMsg("customer created, id: " + customer.getId());
+
 		return new ResponseEntity<>(customer.getId(), HttpStatus.CREATED);
 	}
 
