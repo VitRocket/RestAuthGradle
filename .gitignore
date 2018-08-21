@@ -1,3 +1,13 @@
+# Custom
+.idea/
+*.iml
+
+gradle/
+gradlew
+gradlew.bat
+output/
+
+#####################
 # Compiled class file
 *.class
 
