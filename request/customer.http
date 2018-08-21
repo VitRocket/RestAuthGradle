@@ -1,0 +1,13 @@
+### Get request with a header
+GET http://localhost:8181/api/customer
+
+### Send POST request with json body
+POST http://localhost:8181/api/customer
+Content-Type: application/json
+
+{
+  "firstName": "First Name",
+  "lastName": "Last Name"
+}
+
+###
