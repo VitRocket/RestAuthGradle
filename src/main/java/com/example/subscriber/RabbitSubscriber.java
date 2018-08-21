@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitSubscriber {
 
-	@RabbitListener(queues = "${rocket.rabbitmq.queue}")
-	public void recievedMessage(String msg) {
-		System.out.println("Recieved Message: " + msg);
-	}
+//	@RabbitListener(queues = "${rocket.rabbitmq.queue}")
+//	public void recievedMessage(String msg) {
+//		System.out.println("Recieved Message: " + msg);
+//	}
 }
